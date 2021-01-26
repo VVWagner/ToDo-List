@@ -1,7 +1,7 @@
 //                                Отправляет данные в PHP для ДОБАВЛЕНИЯ в БД при нажатии на кнопку ADD
 
 function sendToBase() {
-  let url = "http://localhost/PHP%20TODO_LIST/php/insert/";
+  let url = "insert/";
 
   let task_text = $("#task").val(); // Сокращение от document.getElementById(id).value
   console.log(task_text);
@@ -26,7 +26,7 @@ function deleteFromBase(varId) {
   $('#delete' + varId).prop('disabled', true);
 
   $.ajax({
-    url: "http://localhost/PHP%20TODO_LIST/php/delete/",
+    url: "delete/",
     type: 'DELETE',
     data: JSON.stringify({ id: varId}),
     success: function() {
@@ -44,7 +44,7 @@ function deleteFromBase(varId) {
 
 function updateText(varId) {
   
-  var url = "http://localhost/PHP%20TODO_LIST/php/update/text/";
+  var url = "update/text/";
 
   var task_text = $("li[id='" + varId + "'] #new").val();
     
@@ -71,7 +71,7 @@ function updateCheckbox(varId) {
   $('#chk' + varId).prop('disabled', true); 
   console.log("Значение чекбокса " + varId  + " изменилось");
   var currCheck = $('#chk' + varId).prop('checked');
-  var url = "http://localhost/PHP%20TODO_LIST/php/update/checkbox/";
+  var url = "update/checkbox/";
   
   $.post( url, JSON.stringify({ id: varId, checkboxStatus: currCheck }), function() { 
       $('#chk' + varId).prop('disabled', false);
@@ -92,7 +92,7 @@ $(document).ready(function() { // Скрипт, который выполняе�
   });
   $('.container').fadeIn(1000); // Плавное появление контейнера
   $.ajax({
-    url: "http://localhost/PHP%20TODO_LIST/php/get/",
+    url: "get/",
     type: 'GET',
     success: function(result) {
       var json_result = JSON.parse(result);
@@ -218,7 +218,7 @@ function checkParams() {
 }
 
 function exit(){
-  var thisWindow = window.open("http://localhost/New_portfolio/src/",'_self');
+  var thisWindow = window.open("/New_portfolio/src/",'_self');
   var exit = confirm("Хотите закрыть страницу?");
   if(exit){
   thisWindow.close();
