@@ -57,6 +57,7 @@ function updateText(varId) {
       $("li[id='" + varId + "'] #edit" + varId).prop('style', 'display: inline!important');
       $("li[id='" + varId + "'] label").prop('style', '');
       $('#plus' + varId).prop('style', 'display: inline!important');
+      $('.col' + varId).prop('style', 'width: 12%;');
       console.log("Изменено");
     })
     .fail(function() {
@@ -119,16 +120,16 @@ $(document).ready(function() { // Скрипт, который выполняе�
 
 function addToTable(varId, task_text, checked, parent_id) {
   var selector;
-  var parent;
+  // var parent;
   if (parent_id == null) {
     selector = '#ul_id li:last';
-    parent = '';
+    // parent = '';
   } else {
     selector = "#ul_id li[id='" + parent_id + "']";
-    parent = 'parent';
+    // parent = 'parent';
   }
   $(selector).after(
-    "<li class='" + parent + "' id='" + varId + "'>" + 
+    "<li id='" + varId + "'>" + 
       "<div class='row'>"+
           "<div class='col'>" +
             "<input type='checkbox' " + checked + " id='chk" + varId + "'onchange='updateCheckbox(" + varId + ")'>" +
@@ -139,7 +140,7 @@ function addToTable(varId, task_text, checked, parent_id) {
             "<input type='text' id='new' style='display:none;'>" +
           "</div>" +
 
-          "<div class='btns col-2'>" +
+          "<div class='btns col-2 col" + varId + "'>" +
 
             "<button class='btn btn-success save' style='display:none;' id='save" + varId + "' onclick='updateText(" + varId + ")'>" +
               "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2-all' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M12.354 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/><path d='M6.25 8.043l-.896-.897a.5.5 0 1 0-.708.708l.897.896.707-.707zm1 2.414l.896.897a.5.5 0 0 0 .708 0l7-7a.5.5 0 0 0-.708-.708L8.5 10.293l-.543-.543-.707.707z'/></svg>" +
@@ -149,9 +150,9 @@ function addToTable(varId, task_text, checked, parent_id) {
             "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path fill-rule='evenodd' d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg>" +
             "</button>" +
         
-            "<button class='btn btn-success plus' id='plus" + varId + "' onclick='addSubtask(" + varId + ")'>" + 
-              "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-plus-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/></svg>" + 
-            "</button>" + 
+            // "<button class='btn btn-success plus' id='plus" + varId + "' onclick='addSubtask(" + varId + ")'>" + 
+            //   "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-plus-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/></svg>" + 
+            // "</button>" + 
         
             "<button class='btn btn-primary edit' id='edit" + varId + "' onclick='editTask(" + varId + ")'>" + 
               "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'><path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/></svg>" + 
@@ -187,18 +188,19 @@ function editTask(varId) {
   $('#edit' + varId).prop('style', 'display: none;');
   $('#save' + varId).prop('style', '');
   $('#cancel' + varId).prop('style', '');
+  $('.col' + varId).prop('style', 'width: 16%;');
 }
 
 //                                Добавляет новый input и кнопку для создания подзадачи
 
-function addSubtask(varId) {
-  $('#plus' + varId).prop('style', 'display: none;');
-  $('#edit' + varId).prop('style', 'display: none;');
-  console.log("Добавить подзадачу");
-  $("li[id='" + varId + "'] input").prop('style', '');
-  $('#cancel' + varId).prop('style', '');
-  $('#save' + varId).prop('style', '');
-}
+// function addSubtask(varId) {
+//   $('#plus' + varId).prop('style', 'display: none;');
+//   $('#edit' + varId).prop('style', 'display: none;');
+//   console.log("Добавить подзадачу");
+//   $("li[id='" + varId + "'] input").prop('style', '');
+//   $('#cancel' + varId).prop('style', '');
+//   $('#save' + varId).prop('style', '');
+// }
 
 //                                Показывает элемент label и кнопку EDIT. Скрывает Input, кнопки Save и Cancel
 
@@ -210,6 +212,7 @@ function cancelEdit(varId) {
   $('#edit' + varId).prop('style', 'display: inline!important');
   $('#save' + varId).prop('style', 'display: none;');
   $('#cancel' + varId).prop('style', 'display: none;');
+  $('.col' + varId).prop('style', 'width: 12%;');
 }
 
 //                                Делает кнопку недоступной, если в Input ничего не введено
@@ -239,3 +242,20 @@ function openButtons(varId) {
   $('#edit' + varId).prop('style', 'display: inline!important');
   $('#plus' + varId).prop('style', 'display: inline!important');
 }
+
+
+// window.onload = function(){
+//   window.setInterval(function(){
+//     $('.container').prop('style', 'display: block;');
+//     var now = new Date();
+//       var clock = document.getElementById("clock");
+//       clock.innerHTML = now.toLocaleTimeString();
+//   }, 1000);
+// };
+
+// #clock{
+//   color: #177070;
+//   font-weight: bold;
+//   font-size: 24px;
+//   text-align: end;
+// }

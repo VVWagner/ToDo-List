@@ -5,8 +5,8 @@
 h2 {
     text-align: center;
     background: repeating-linear-gradient(-45deg, rgb(17, 57, 70), rgb(14, 41, 49) 20px, rgb(76, 128, 163) 20px, rgb(74, 123, 156) 30px, rgb(16, 58, 75) 30px);
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: -13px;
+    margin-right: -13px;
     padding: 18px;
     color: rgb(217, 218, 213);
     font-size: 60px;
@@ -18,11 +18,10 @@ h2 {
     width: 45%;
     min-width: 900px;
     background-color: rgb(240, 240, 240);
-    box-shadow: 4px 4px 10px 2px rgb(77, 77, 77);
+    box-shadow: 5px 5px 12px 3px rgb(77, 77, 77);
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
     padding-bottom: 10px;
-    display: none;
   }
 
 #task {
@@ -37,7 +36,6 @@ h2 {
 li {
     background-color: rgba(255, 255, 255, 0.685);
     border-radius: 8px;
-    transition: 1s;
     margin-bottom: 10px;
     padding: 2px 0;
 }
@@ -152,6 +150,10 @@ hr {
 
 .col-7 {
     margin: auto 0;
+}
+
+.col-2 {
+    width: 12%;
 }
 
 li.parent {
