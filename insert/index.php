@@ -5,11 +5,11 @@
     $text_data = $data["text"];
 
 
-    $dbconn = pg_connect("host=localhost dbname=123 user=postgres password=admin")
+    $dbconn = pg_connect("host=localhost port=5433 dbname=testdb user=postgres password=admin")
         or die("Невозможно подключиться к БД");
 
 
-    $query = "INSERT INTO lists (lists_name) VALUES ('".$text_data."') RETURNING lists_id;";
+    $query = "INSERT INTO todolist (task) VALUES ('".$text_data."') RETURNING id;";
 
     
 

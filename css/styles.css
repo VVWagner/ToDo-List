@@ -106,13 +106,14 @@ hr {
 .btns {
     margin: auto;
     float: right;
-    margin-right: 5px;
+    margin-right: 0;
 }
 
 .btns .btn {
     margin-right: 3px;
-    padding: .36rem .64rem;
+    padding: .3rem .6rem;
     transition: 0.3s;
+    opacity: 0.75;
 }
 
 .btns .btn:last-child {
@@ -122,7 +123,7 @@ hr {
 .btns .btn:hover {
     transition: 0.4s;
     transform: scale(1.2);
-    filter: brightness(150%);
+    opacity: 1;
 }
 
 .btns .btn-primary {
@@ -151,6 +152,19 @@ hr {
 
 .col-7 {
     margin: auto 0;
+}
+
+li.parent {
+    margin-left: 30px;
+    background-color: rgba(100, 148, 237, 0.342);
+}
+
+.parent .btns .btn {
+    padding: .2rem .4rem;
+}
+
+.parent .btns.col-2 {
+    width: 16%;
 }
 
 @media (max-width: 575px) { /*                575px и ниже                */

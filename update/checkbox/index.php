@@ -6,7 +6,7 @@
     $status = $data["checkboxStatus"];
 
 
-    $dbconn = pg_connect("host=localhost dbname=123 user=postgres password=admin")
+    $dbconn = pg_connect("host=localhost port=5433 dbname=testdb user=postgres password=admin")
         or die("Невозможно подключиться к БД");
 
 
@@ -16,7 +16,7 @@
         $statusText = 'false';
     };
 
-    $query = "UPDATE lists SET lists_checkbox = ".$statusText." WHERE lists_id = ".$id_data.";";
+    $query = "UPDATE todolist SET checkbox = ".$statusText." WHERE id = ".$id_data.";";
 
     pg_query($query) or http_response_code(500);
 

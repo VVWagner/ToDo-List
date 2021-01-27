@@ -99,10 +99,10 @@ $(document).ready(function() { // Скрипт, который выполняе�
       console.log(json_result);
       for(var element of json_result) {
         checked = '';
-        if (element['lists_checkbox'] == 't') { // По умолчанию 'checked' равен пустой строке, а если равен 't', то принимает значение 'checked'
+        if (element['checkbox'] == 't') { // По умолчанию 'checked' равен пустой строке, а если равен 't', то принимает значение 'checked'
           checked = 'checked';
         }
-        addToTable(element['lists_id'], element['lists_name'], checked, element['parent_id']);
+        addToTable(element['id'], element['task'], checked, element['parent_id']);
         /*if(element['parent_id'] !== null) {
           addToParent(element['lists_id'], element['lists_name'], checked, element['parent_id']);
         } else {
@@ -119,13 +119,16 @@ $(document).ready(function() { // Скрипт, который выполняе�
 
 function addToTable(varId, task_text, checked, parent_id) {
   var selector;
+  var parent;
   if (parent_id == null) {
     selector = '#ul_id li:last';
+    parent = '';
   } else {
     selector = "#ul_id li[id='" + parent_id + "']";
+    parent = 'parent';
   }
   $(selector).after(
-    "<li id='" + varId + "'>" + 
+    "<li class='" + parent + "' id='" + varId + "'>" + 
       "<div class='row'>"+
           "<div class='col'>" +
             "<input type='checkbox' " + checked + " id='chk" + varId + "'onchange='updateCheckbox(" + varId + ")'>" +
@@ -189,9 +192,12 @@ function editTask(varId) {
 //                                Добавляет новый input и кнопку для создания подзадачи
 
 function addSubtask(varId) {
-  $('#edit' + varId).prop('style', 'display: none;');
   $('#plus' + varId).prop('style', 'display: none;');
+  $('#edit' + varId).prop('style', 'display: none;');
   console.log("Добавить подзадачу");
+  $("li[id='" + varId + "'] input").prop('style', '');
+  $('#cancel' + varId).prop('style', '');
+  $('#save' + varId).prop('style', '');
 }
 
 //                                Показывает элемент label и кнопку EDIT. Скрывает Input, кнопки Save и Cancel

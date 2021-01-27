@@ -10,11 +10,11 @@
     $id_data = $data["id"];
 
 
-    $dbconn = pg_connect("host=localhost dbname=123 user=postgres password=admin")
+    $dbconn = pg_connect("host=localhost port=5433 dbname=testdb user=postgres password=admin")
         or die("Невозможно подключиться к БД");
 
 
-    $query = "DELETE FROM lists WHERE lists_id = ".$id_data." OR parent_id = ".$id_data.";";
+    $query = "DELETE FROM todolist WHERE id = ".$id_data." OR parent_id = ".$id_data.";";
 
     pg_query($query) or http_response_code(500);
 

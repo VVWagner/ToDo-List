@@ -1,9 +1,9 @@
 <?php
 
-    $dbconn = pg_connect("host=localhost dbname=123 user=postgres password=admin")
+    $dbconn = pg_connect("host=localhost port=5433 dbname=testdb user=postgres password=admin")
         or die("Невозможно подключиться к БД");
 
-    $query = 'SELECT * FROM lists ORDER BY lists_id ASC';
+    $query = 'SELECT * FROM todolist ORDER BY id ASC';
     $result = pg_query($query) or die('Ошибка запроса: ' . pg_last_error());
 
     $line = pg_fetch_all($result);
